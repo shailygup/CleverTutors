@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Admin Page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="Style/js/adminNav.js"></script>
+	<link href="Style/css/adminStyle.css" rel='stylesheet' type='text/css' />
+	<link href="Style/css/bootstrap1.css" rel='stylesheet' type='text/css' />
+	<link href="Style/css/style1.css" rel='stylesheet' type='text/css' />
+	<link href="Style/css/font-awesome.css" rel="stylesheet"> 
+	 <!-- js-->
+	<!--webfonts-->
+	<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<!--//webfonts--> 
+	<!--animate-->
+	<link href="Style/css/animate.css" rel="stylesheet" type="text/css" media="all" >
+	<script src="Style/js/wow.min.js"></script>
+		<script>
+			 new WOW().init();
+		</script>
+	<!--//end-animate-->
+	<!-- Metis Menu -->
+	<link href="Style/css/custom.css" rel="stylesheet">
+	
+</head> 
+<body class="cbp-spmenu-push">
+	<div class="main-content">
+		<!--left-fixed -navigation-->
+		<div class=" sidebar" role="navigation">
+            <div class="navbar-collapse">
+				<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right bg-" id="cbp-spmenu-s1" style="background-color: #000;">
+					<ul class="nav" id="side-menu">
+						<li>
+							<a href="#" class="active" id="meditUser"><i class="fa fa-user nav_icon"></i>Edit Users</a>
+							<a href="#" class="active" id="meditProduct"><i class="fa fa-tag nav_icon"></i>Edit Products</a>
+							<a href="#" class="active" id="msales"><i class="fa fa-bar-chart nav_icon"></i>Check Sales</a>
+						</li>
+						
+					</ul>
+					<!-- //sidebar-collapse -->
+				</nav>
+			</div>
+			
+		</div>
+		<!--left-fixed -navigation-->
+		<!-- header-starts -->
+		<div class="sticky-header header-section ">
+			<div class="header-left">
+				<!--toggle button start-->
+				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
+				<!--toggle button end-->
+				<!--logo -->
+				<div class="logo" style="background-color: #000">
+					<a href="admin.php">
+						<h1>Admin Page</h1>
+						<span>AdminPanel</span>
+					</a>
+				</div>
+				
+				<div class="clearfix"> </div>
+				</div>
+			
+				<!--user profile -->
+				<div class="profile_details">		
+					<ul>
+						<li class="dropdown profile_details_drop">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<div class="profile_img">	
+									<!--<span class="prfil-img"><img src="images/a.png" alt=""> </span> -->
+									<div class="user-name">
+										<p>Admin</p>
+										<span>Administrator</span>
+									</div>
+									<i class="fa fa-angle-down lnr"></i>
+									<i class="fa fa-angle-up lnr"></i>
+									<div class="clearfix"></div>	
+								</div>	
+							</a>
+							<ul class="dropdown-menu drp-mnu">
+								<li> <a href="index.php"><i class="fa fa-sign-out"></i> Logout</a> </li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>				
+			</div>
+			<div class="clearfix"> </div>	
+		</div>
+		<!-- //header-ends -->

@@ -1,0 +1,105 @@
+-- Database to be used for Database project
+
+--CREATE DATABASE called "Tuition"
+ 
+
+DROP TABLE user;
+DROP TABLE product;
+DROP TABLE cart;
+DROP TABLE cart_product;
+
+
+CREATE TABLE user(
+  ID int NOT NULL AUTO_INCREMENT,
+  first_Name  VARCHAR(50) NOT NULL,
+	last_Name	 VARCHAR(50) NOT NULL,
+  email  VARCHAR(50) 	NOT NULL,
+  address VARCHAR(50) NOT NULL,
+	user_name  VARCHAR(50) NOT NULL,
+	password  VARCHAR(50) NOT NULL,
+	type	    varchar(50),
+    PRIMARY KEY (ID)
+); 
+
+
+
+--Customer table
+
+INSERT INTO user (first_Name, last_Name, email, address,user_name, password, type)
+VALUES ('Shaily', 'Gupta', 'sgupta@my.bcit.ca','123 Abc Road', 'ShailyAdmin', 'admin', 'admin');
+INSERT INTO user (first_Name, last_Name, email, address, user_name, password, type)
+VALUES ('Andrew', 'Schaub', 'aschaub@my.bcit.ca', '222 BBC Road','AndrewAdmin', 'admin', 'admin');
+INSERT INTO user (first_Name, last_Name, email, address,user_name, password, type)
+VALUES ('Daisy', 'Johnson', 'quake@sheild.marv','1244 Quate Town, New York, USA','Quake', 'customer', 'customer'); 
+INSERT INTO user (first_Name, last_Name, email, address, user_name, password, type)
+VALUES ('Grant', 'Ward', 'takenover@hydra.marv','101-Middle Sahara Desert, SW','HailHydra', 'customer', 'customer'); 
+INSERT INTO user (first_Name, last_Name, email, address, user_name, password, type)
+VALUES ( 'Melinda', 'May', 'thecaverly@sheild.marv','202-1025 Howie Avenue, Coquitlam','theCaverly', 'customer', 'customer');
+INSERT INTO user (first_Name, last_Name, email, address, user_name, password, type)
+VALUES ('Phil', 'Coulson', 'capAmericaFanboy@sheild.marv','3 BC Ave, BC','captAmerFanboy', 'customer', 'customer');
+INSERT INTO user (first_Name, last_Name, email,address, user_name, password, type)
+VALUES ('Leo',  'Fitz', 'monkeyboy@sheild.marv','123 Christmas Street,Coquitlam','Monkeyboy', 'customer', 'customer');
+INSERT INTO user (first_Name, last_Name, email, address,user_name, password, type)
+VALUES ('Gemma', 'Simmons', 'survivaldoc@sheild.marv','101 In Middle, Somewhere','Survivaldoc', 'customer', 'customer');
+ 
+
+
+CREATE TABLE cart (
+  ID int NOT NULL AUTO_INCREMENT,
+  -- states are: started, completed, cancelled
+  state varchar(30) NOT NULL,
+  time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  total numeric(15,2) NOT NULL,
+  PRIMARY KEY (ID)
+  -- UPDATE/DELETE CASCADE = allow cascading operation, UPDATE/DELETE RESTRICT = disallow cascading operation
+);
+
+INSERT INTO cart (total, state) VALUES (0.00, 'cancelled');
+INSERT INTO cart (total, state) VALUES (0.00, 'cancelled');
+
+
+CREATE TABLE product (
+  ID int NOT NULL AUTO_INCREMENT,
+  -- stock keeping unit
+  picture VARCHAR(150) NOT NULL, 
+  name VARCHAR(50)   NOT NULL,
+  item_price  numeric(15, 2) NOT NULL,
+  description varchar(100) NOT NULL,
+  type varchar(50) NOT NULL,
+  uniqueId int(50) NOT NULL,
+  quantity int(50) NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/JavaBook.jpg', 'Java Software Solutions 7th Edition', 'Textbook', 'Java Textbook',  100.73, 1, 20);
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/PHP.jpg', 'Beginning PHP 5.3 1st Edition', 'Textbook', 'PHP Textbook',  20.57, 2, 20); 
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/Database.jpg' ,'Database Systems 11th Edition', 'Textbook', 'Database Textbook', 145.26, 3, 20);
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/math.jpg', 'Discrete Mathematics and its Applications 7th Edition', 'Textbook', 'Math Textbook', 160.50, 4, 20);
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/sg1.jpg','SAT Study Guides 2016', 'Study Guides', 'General Study Guide', 15.00, 5, 20);
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/sg2.jpg', 'Java 1.1 Certification Study Guide', 'Study Guides', 'Java Study Guide', 5.00, 6, 20);
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/sg3.jpg', 'DB2 9 for z/OS Database Administration: Certification Study Guide', 'Study Guides', 'Database Study Guide', 45.95, 7, 20);
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/sg4.jpg','Zend PHP 5 Certification Study Guide: a php[architect] guide', 'Study Guides', 'PHP Study Guide', 24.00, 8, 20);
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/ws.png','Java Worksheet', 'WorkSheet', 'Java Worksheet', 5.00, 9, 20);
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/ws.png', 'PHP Worksheet', 'WorkSheet', 'PHP Worksheet', 5.00, 10, 20);
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/ws.png', 'Math Worksheet', 'WorkSheet', 'MAth Worksheet', 5.00, 11, 20);
+INSERT INTO product (picture, name, type, description, item_price, uniqueId, quantity) VALUES ('Style/Image/ws.png', 'SQL Worksheet', 'WorkSheet', 'Database Worksheet', 5.00, 12, 20);
+
+
+CREATE TABLE cart_product (
+  ID int NOT NULL AUTO_INCREMENT,
+  product_id int NOT NULL,
+  cart_id int NOT NULL,
+  quantity int NOT NULL,
+  time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (product_id) REFERENCES product(ID) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (cart_id) REFERENCES cart(ID) ON UPDATE CASCADE ON DELETE CASCADE,
+  PRIMARY KEY (ID)
+);
+
+INSERT INTO cart_product (cart_id, product_id) VALUES (1, 1);
+INSERT INTO cart_product (cart_id, product_id) VALUES (1, 2);
+INSERT INTO cart_product (cart_id, product_id) VALUES (2, 1);
+INSERT INTO cart_product (cart_id, product_id) VALUES (2, 2);
+
+
+
