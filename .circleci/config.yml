@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: /var/www/html
     docker:
-      - image: php:7.1-apache
+      - image: circleci/php:7.1-cli
         environment:
           APP_ENV: test
     steps:
@@ -31,4 +31,4 @@ jobs:
           command: php composer.phar install
       - run:
           name: Run Unit tests
-          command: vendor/bin/phpunit --configuration testing-circle.xml
+          command: vendor/bin/phpunit
