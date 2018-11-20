@@ -31,4 +31,4 @@ jobs:
           command: php composer.phar install
       - run:
           name: Run Unit tests
-          command: echo "Hi"
+          command: phpunit
