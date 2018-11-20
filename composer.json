@@ -1,4 +1,6 @@
 {
     "require": {
+	"phpunit": "5.0.*"
     }
+
 }
